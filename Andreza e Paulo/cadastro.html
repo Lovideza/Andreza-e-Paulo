@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+    h2 {
+      text-align: center;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .erro {
+      color: red;
+      font-size: 14px;
+    }
+    .sucesso {
+      color: green;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Cadastro</h2>
+  <form id="formCadastro">
+    <input type="text" id="nome" placeholder="Nome" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="senha" placeholder="Senha" required>
+    <button type="submit">Cadastrar</button>
+  </form>
+  <p id="mensagem"></p>
+</div>
+
+<script>
+  const form = document.getElementById('formCadastro');
+  const mensagem = document.getElementById('mensagem');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const nome = document.getElementById('nome').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const senha = document.getElementById('senha').value.trim();
+
+    // Validação simples
+    if (nome.length < 3) {
+      mensagem.textContent = "Nome deve ter pelo menos 3 caracteres.";
+      mensagem.className = "erro";
+      return;
+    }
+
+    if (!email.includes("@")) {
+      mensagem.textContent = "Email inválido.";
+      mensagem.className = "erro";
+      return;
+    }
+
+    if (senha.length < 6) {
+      mensagem.textContent = "Senha deve ter pelo menos 6 caracteres.";
+      mensagem.className = "erro";
+      return;
+    }
+
+    // Simulação de cadastro
+    mensagem.textContent = "Cadastro realizado com sucesso!";
+    mensagem.className = "sucesso";
+
+    // Limpar formulário
+    form.reset();
+  });
+</script>
+
+</body>
+</html>
