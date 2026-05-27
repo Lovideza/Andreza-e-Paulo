@@ -10,8 +10,11 @@ while True:
             sub = num1 - num2
             print(f"Subtração: {sub}")
         elif op== "/" :
-            div = num1 / num2
-            print(f"Divisão: {div}")
+            if num2 = 0:
+                print("Divisão por zero não é possível!")
+            else:
+                div = num1 / num2
+                print(f"Divisão: {div}")
         elif op== "*" :
             mult = num1 * num2
             print(f"Multiplicação: {mult}")
